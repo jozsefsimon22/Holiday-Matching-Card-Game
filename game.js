@@ -25,3 +25,7 @@ cardBacks.forEach((div, index) =>{
      
      div.appendChild(img);
 })
+
+document.querySelectorAll('.card-inner').forEach(element => {
+     element.addEventListener("click",function(){element.classList.add("flip")})
+});

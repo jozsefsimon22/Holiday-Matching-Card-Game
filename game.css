@@ -67,10 +67,15 @@ body {
   }
   
   /* Do an horizontal flip when you move the mouse over the flip box container */
-  .card:hover .card-inner {
+  /* .card:hover .card-inner {
+    transform: rotateY(180deg);
+  } */
+
+  .flip {
     transform: rotateY(180deg);
   }
   
+   
   /* Position the front and back side */
   .card-front, .card-back {
     position: absolute;
@@ -85,9 +90,6 @@ body {
   .card-back {
     transform: rotateY(180deg);
   }
-
-
-  
 
 .status-bar{
     height: 50px;
