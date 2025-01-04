@@ -1,0 +1,58 @@
+body {
+    font-family: "Lato";
+    object-fit: fit;
+    background-image: url(./assets/game-bg.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    display: flex;
+    height: 98vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.starter-container{
+    background-image: url(./assets/desktop-starter-bg.png);
+    background-color: white;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 849px;
+    height: 924px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.starter-container > h1{
+    font-size: 64px;
+    text-align: center;
+}
+
+.buttons{
+    display: flex;
+    border-radius: 10px;
+    background-color: #B42929;
+    padding: 3px;
+}
+
+button{
+    width: 6rem;
+    height: 3rem;
+    border: none;
+    background: none;
+    color: #C3D9BE;
+}
+
+button:hover{
+    cursor: pointer;
+    background-color: #7d0808;
+}
+
+.easy-button, .medium-button{
+    border-right: 1px solid #C3D9BE;
+}

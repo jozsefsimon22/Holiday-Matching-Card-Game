@@ -1,0 +1,97 @@
+body {
+    font-family: "Lato";
+    object-fit: fit;
+    background-image: url(./assets/game-bg.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.container{
+    display: flex;
+    height: 98vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 849px;
+    height: 924px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 40px;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    row-gap: 20px;
+    justify-items: center;
+    align-items: center;
+}
+
+.card{
+    /* background-color: #C3D9BE; */
+    height: 170px;
+    width: 100px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: transparent;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensures the image fits nicely within the container */
+    border-radius: 10px; /* Matches the border radius of the card */
+}
+
+
+/* This container is needed to position the front and back side */
+.card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+  
+  /* Do an horizontal flip when you move the mouse over the flip box container */
+  .card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  /* Position the front and back side */
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    border: 1px solid black;
+  }
+  
+  /* Style the back side */
+  .card-back {
+    transform: rotateY(180deg);
+  }
+
+
+  
+
+.status-bar{
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    border: 1px solid black;
+}
