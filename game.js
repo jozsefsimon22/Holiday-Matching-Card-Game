@@ -1,3 +1,27 @@
+// Timer
+
+const display = document.getElementById("clock")
+let timer = setInterval(update, 10);
+let startTime = Date.now();
+let elapsedTime = 0;
+
+console.log("test");
+
+
+function update(){
+     const currentTime = Date.now();
+     elapsedTime = currentTime - startTime;
+
+     let minutes = Math.floor(elapsedTime / (1000 * 60 ) % 60);
+     let seconds = Math.floor(elapsedTime / 1000 % 60);
+
+     minutes = String(minutes).padStart(2, "0");
+     seconds = String(seconds).padStart(2, "0");
+
+
+     display.textContent = `${minutes}:${seconds}`
+}
+
 
 //Allocates the images cards randomly
 const cardBacks = document.querySelectorAll('.card-back');
@@ -81,6 +105,10 @@ function restartGame() {
      document.querySelectorAll('.card-inner').forEach(element => { element.classList.remove("flip") });
      flipCount = 0;
      document.getElementById("flip-count").innerHTML = flipCount;
+     startTime = Date.now()
+     elapsedTime = 0;
 }
 
 document.getElementById('restart-game').addEventListener("click", restartGame);
+
+
