@@ -77,38 +77,68 @@ document.querySelectorAll('.card-inner').forEach(element => {
      });
 });
 
-// Function to check for a match
+// Add these variables at the top with other variables
+let matchedPairs = 0;
+const totalPairs = 8;
+
+// Update the checkForMatch function
 function checkForMatch() {
+    const [firstCard, secondCard] = flippedCards;
 
-     const [firstCard, secondCard] = flippedCards;
-
-     console.log(firstCard);
-     console.log(secondCard);
-
-
-     // Check if the two flipped cards match
-     if (firstCard.getAttribute('card-id') === secondCard.getAttribute('card-id')) {
-          // Cards match, keep them flipped
-          flippedCards = []; // Reset for the next pair
-     } else {
-          // Cards don't match, flip them back after a short delayF
-          setTimeout(() => {
-               document.getElementById(firstCard.id).classList.remove("flip");
-               document.getElementById(secondCard.id).classList.remove("flip");
-               flippedCards = []; // Reset for the next pair
-          }, 1000); // Adjust delay as needed
-     }
+    // Check if the two flipped cards match
+    if (firstCard.getAttribute('card-id') === secondCard.getAttribute('card-id')) {
+        // Cards match, keep them flipped
+        flippedCards = []; // Reset for the next pair
+        matchedPairs++;
+        
+        // Check if game is complete
+        if (matchedPairs === totalPairs) {
+            showSummary();
+        }
+    } else {
+        // Cards don't match, flip them back after a short delay
+        setTimeout(() => {
+            firstCard.classList.remove("flip");
+            secondCard.classList.remove("flip");
+            flippedCards = []; // Reset for the next pair
+        }, 1000);
+    }
 }
 
-// Restart the game
+// Add these new functions
+function showSummary() {
+    clearInterval(timer); // Stop the timer
+    
+    const modal = document.getElementById('summary-modal');
+    const finalTimeSpan = document.getElementById('final-time');
+    const finalFlipsSpan = document.getElementById('final-flips');
+    
+    finalTimeSpan.textContent = display.textContent;
+    finalFlipsSpan.textContent = flipCount;
+    
+    modal.style.display = 'flex';
+}
+
+// Update the restartGame function
 function restartGame() {
-     document.querySelectorAll('.card-inner').forEach(element => { element.classList.remove("flip") });
-     flipCount = 0;
-     document.getElementById("flip-count").innerHTML = flipCount;
-     startTime = Date.now()
-     elapsedTime = 0;
+    document.querySelectorAll('.card-inner').forEach(element => {
+        element.classList.remove("flip");
+    });
+    flipCount = 0;
+    matchedPairs = 0;
+    document.getElementById("flip-count").innerHTML = flipCount;
+    startTime = Date.now();
+    elapsedTime = 0;
+    
+    // Hide the summary modal
+    document.getElementById('summary-modal').style.display = 'none';
+    
+    // Clear and restart the timer
+    clearInterval(timer);
+    timer = setInterval(update, 10);
 }
 
-document.getElementById('restart-game').addEventListener("click", restartGame);
+// Add event listener for the play again button
+document.getElementById('play-again').addEventListener('click', restartGame);
 
 
