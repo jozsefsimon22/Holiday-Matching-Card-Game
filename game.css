@@ -35,7 +35,7 @@ body {
 
 .card {
   /* background-color: #C3D9BE; */
-  height: 120px;
+  height: 100px;
   width: 60px;
   border-radius: 10px;
   display: flex;
@@ -92,7 +92,7 @@ body {
 
 .status-bar {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;

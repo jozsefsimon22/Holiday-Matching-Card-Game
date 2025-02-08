@@ -141,4 +141,6 @@ function restartGame() {
 // Add event listener for the play again button
 document.getElementById('play-again').addEventListener('click', restartGame);
 
+document.getElementById('restart-game').addEventListener('click', restartGame);
+
 
